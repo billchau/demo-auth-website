@@ -36,11 +36,8 @@ export default {
     const auth = computed(() => store.state.authenticated)
 
     const logout = async () => {
-      await fetch("http://localhost:8000/api/logout", {
-        method: "POST",
-        headers: {'Content-Type': "application/json"},
-        credentials: 'include', // <--- get the cookie
-      })
+      await store.dispatch('setAuth', false)
+      await store.dispatch('setUserData', {})
     }
 
     return {

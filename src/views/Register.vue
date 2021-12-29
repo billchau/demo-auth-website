@@ -2,12 +2,16 @@
   <form @submit.prevent="submit">
     <h1 class="h3 mb-3 fw-normal">Please register</h1>
     <div class="form-floating">
-      <input v-model="data.name" type="text" class="form-control" id="floatingInputName" placeholder="bill">
+      <input v-model="data.username" type="text" class="form-control" id="floatingInputName" placeholder="bill">
       <label for="floatingInputName">Name</label>
     </div>
     <div class="form-floating">
       <input v-model="data.email" type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
       <label for="floatingInputEmail">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input v-model="data.roleStr" type="text" class="form-control" id="floatingInputRoles" placeholder="admin, mod">
+      <label for="floatingInputRoles">Roles</label>
     </div>
     <div class="form-floating">
       <input v-model="data.password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
@@ -24,16 +28,25 @@ export default {
   name: "Register",
   setup() {
     const data = reactive({
-      name: '',
+      username: '',
       email: '',
-      password: ''
+      password: '',
+      roleStr: '',
+      role: [] as string[],
     });
 
     const router = useRouter();
 
     const submit = async () => {
       console.log(data)
-      await fetch("http://localhost:8000/api/register", {
+      let temp = data.roleStr.replaceAll(" ", "")
+      // if (temp.includes(",")) {
+        
+      // } else {
+      //   data.role = [temp]
+      // }
+data.role = temp.split(",")
+      await fetch("http://localhost:8000/api/auth/signup", {
         method: "POST",
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify(data)
