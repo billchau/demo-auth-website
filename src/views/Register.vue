@@ -40,12 +40,7 @@ export default {
     const submit = async () => {
       console.log(data)
       let temp = data.roleStr.replaceAll(" ", "")
-      // if (temp.includes(",")) {
-        
-      // } else {
-      //   data.role = [temp]
-      // }
-data.role = temp.split(",")
+      data.role = temp.split(",")
       await fetch("http://localhost:8000/api/auth/signup", {
         method: "POST",
         headers: { 'Content-Type': "application/json" },
