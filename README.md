@@ -1,24 +1,17 @@
-# demo-auth-website
+This project targets to demo authentication and authorization
 
-## Project setup
-```
-npm install
-```
+Trying to create the project close to production level as possible
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Switch to different branches to see different methods
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+Backend
+https://github.com/billchau/authdemo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Frontend
+https://github.com/billchau/demo-auth-website
+
+branch:
+master: simple JWT token
+jwt-advance version: JWT token with refresh logic
+oauth2: Work in progress (will be a simple oauth2 and will create a advance version later on)
